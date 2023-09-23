@@ -1,3 +1,11 @@
+sudo -i
+   46  su docker-user
+   47  sudo useradd -aG docker ec2-user
+   48  sudo usermod -aG docker ec2-user
+   49  groups ec2-user
+   50  mkdir project-df
+   51  cd project-df/
+
 Docker file
 
 FROM ubuntu:latest
@@ -27,4 +35,5 @@ index.html
 docker build -t ubuntu-docker-example .
 
 docker run -d -p 3001:3001 --name ubuntu-container ubuntu-docker-example
+
 
