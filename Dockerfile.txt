@@ -1,0 +1,30 @@
+Docker file
+
+FROM ubuntu:latest
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip && \
+    apt-get clean
+WORKDIR /app
+COPY index.html /app/
+EXPOSE 3002
+CMD ["python3","-m","http.server","3001"]
+
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dockerfile Demo</title>
+</head>
+<body>
+    <h1>Hello Students,</h1>
+    <p>My name is Akram, I am your DevOps trainer, and this is a Dockerfile Demo!</p>
+    <p>I hope you've liked the demo.</p>
+    <p>Thank you</p>
+</body>
+</html>
+
+docker build -t ubuntu-docker-example .
+
+docker run -d -p 3001:3001 --name ubuntu-container ubuntu-docker-example
+
