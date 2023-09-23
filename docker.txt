@@ -1,4 +1,5 @@
- 1  sudo yum install update -y
+Installing Docker 
+1  sudo yum install update -y
     2  sudo amazon-linux-extras install docker -y
     3  sudo systemctl start docker
     4  sudo systemctl enable docker
@@ -32,3 +33,13 @@
    32  docker run -d -p 8080:80 --name devops-nginx devops-cicd-nginx:1.0
    33  docker ps
    34  history
+
+Add User
+sudo adduser docker-user
+id docker-user
+sudo usermod -aG docker docker-user
+groups docker-user
+su docker-user
+id docker-user
+sudo passwd docker-user
+su docker-user
