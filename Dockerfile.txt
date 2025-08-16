@@ -1,39 +1,52 @@
-sudo -i
-   46  su docker-user
-   47  sudo useradd -aG docker ec2-user
-   48  sudo usermod -aG docker ec2-user
-   49  groups ec2-user
-   50  mkdir project-df
-   51  cd project-df/
+sudo usermod -aG docker ec2-user
+groups ec2-user
+mkdir project-df
+cd project-df
+vi Dockerfile
 
-Docker file
-
+# Use the official Ubuntu base image
 FROM ubuntu:latest
+
+# Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
+
+# Update package repositories and install necessary packages
 RUN apt-get update && \
     apt-get install -y python3 python3-pip && \
     apt-get clean
-WORKDIR /app
-COPY index.html /app/
-EXPOSE 3002
-CMD ["python3","-m","http.server","3001"]
 
-index.html
+# Create a directory for our app
+WORKDIR /app
+
+# Copy index.html /app/
+
+# Expose port 3001 for the web server
+EXPOSE 3001
+
+# Command to run the Python web server
+CMD ["python3", "-m", "http-server", "3001"]
+
+vi index.html
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Dockerfile Demo</title>
 </head>
 <body>
-    <h1>Hello Students,</h1>
-    <p>My name is Akram, I am your DevOps trainer, and this is a Dockerfile Demo!</p>
-    <p>I hope you've liked the demo.</p>
-    <p>Thank you</p>
+<h1>Hello Friends,</h1>
+<p>Welcome to my Channel!</p>
+<p>Make sure to Like & Subscribe</p>
+<p>Thank you</p>
 </body>
 </html>
 
-docker build -t ubuntu-docker-example .
 
-docker run -d -p 3001:3001 --name ubuntu-container ubuntu-docker-example
+
+
+docker build -t ubuntu-docker-example .
+docker ps -a (display container - process status)
+docker run -d -p 3001:3001 --name ubuntu-container ubintu-docker-example
+docker ps -a
 
 
