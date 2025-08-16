@@ -44,4 +44,5 @@ id docker-user
 sudo passwd docker-user  (user password change)
 su docker-user
 sudo service docker start (starting docker)
+docker run hello-world
 
